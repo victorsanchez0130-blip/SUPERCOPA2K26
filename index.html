@@ -5,177 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SUPERCOPA 2026</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <a href="javascript:void(0)" onclick="mostrarSeccion('inicio', this)" class="logo">
-            <h1>SUPERCOPA <span>2026</span></h1>
-        </a>
-        <nav class="nav">
-            <button class="nav-btn active" onclick="mostrarSeccion('inicio', this)">🏠 Inicio</button>
-            <button class="nav-btn" onclick="mostrarSeccion('concursos', this)">🎺 Concursos</button>
-            <button class="nav-btn" onclick="mostrarSeccion('tabla', this)">🏆 Tabla General</button>
-            <button class="nav-btn" onclick="mostrarSeccion('prensa', this)">📰 Prensa</button>
-            <button id="btn-login-modal" class="btn-login" onclick="toggleModalLogin()">🔐 Iniciar Sesión</button>
-            <button id="btn-logout" class="btn-logout hidden" onclick="cerrarSesion()">🚪 Cerrar Sesión</button>
-        </nav>
+
+    <!-- BARRA SUPERIOR Y NAVEGACIÓN -->
+    <header class="navbar">
+        <div class="nav-container">
+            <h1 class="logo-text">SUPERCOPA <span>2026</span></h1>
+
+            <nav class="nav-links">
+                <button class="nav-btn active" onclick="mostrarSeccion('inicio', this)">🏠 Inicio</button>
+                <button class="nav-btn" onclick="mostrarSeccion('concursos', this)">🎺 Concursos</button>
+                <button class="nav-btn" onclick="mostrarSeccion('tabla', this)">🏆 Tabla General</button>
+                <button class="nav-btn" onclick="mostrarSeccion('prensa', this)">📰 Prensa</button>
+                
+                <button id="btn-login-modal" class="btn-primary" onclick="toggleModalLogin()">🔐 Iniciar Sesión</button>
+                <button id="btn-logout" class="btn-danger hidden" onclick="cerrarSesion()">🚪 Cerrar Sesión</button>
+            </nav>
+        </div>
+
+        <!-- BARRA DE ROL / ADMIN -->
+        <div id="admin-bar" class="admin-bar hidden">
+            <div class="admin-info">
+                <span id="role-badge" class="role-badge">ROL: CREADOR</span>
+                <span id="user-display-name">Usuario: Jhon Cristopher Alvarado Ruiz</span>
+            </div>
+            <button id="btn-abrir-panel" class="btn-action" onclick="togglePanelGestion()">⚙️ Abrir Panel de Gestión</button>
+        </div>
     </header>
 
-    <!-- BARRA SUPERIOR DE SESIÓN -->
-    <div id="admin-bar" class="admin-top-bar hidden">
-        <div class="admin-info">
-            <span class="admin-badge" id="role-badge">CREADOR</span>
-            <span id="user-display-name">Usuario: Jhon Cristopher Alvarado Ruiz</span>
+    <!-- PANEL DE GESTIÓN DEL CREADOR -->
+    <section id="panel-edicion" class="panel-edicion hidden">
+        <div class="panel-header">
+            <h2>⚙️ Panel de Gestión del Creador</h2>
+            <button class="btn-close" onclick="togglePanelGestion()">✖</button>
         </div>
-        <button id="btn-abrir-panel" class="btn-toggle-admin hidden" onclick="togglePanelGestion()">⚙️ Abrir Panel de Gestión</button>
-    </div>
 
-    <!-- PANEL DE EDICIÓN EXCLUSIVO PARA EL CREADOR -->
-    <div id="panel-edicion" class="panel-edicion-container hidden">
-        <div class="panel-header-custom">
-            <h3>Panel Creador - Gestión de Resultados, Concursos y Colegios</h3>
-        </div>
         <div class="nav-tabs-custom">
-            <button class="tab-btn active" onclick="cambiarTab('tab-resultados', this)">🏆 Concursos y Resultados</button>
-            <button class="tab-btn" onclick="cambiarTab('tab-bandas', this)">🥁 Gestión de Colegios y Categorías</button>
+            <button class="tab-btn active" onclick="cambiarTab('tab-eventos', this)">📅 Gestión de Concursos</button>
+            <button class="tab-btn" onclick="cambiarTab('tab-puestos', this)">🏅 Cargar Puestos / Puntos</button>
+            <button class="tab-btn" onclick="cambiarTab('tab-bandas', this)">🏫 Colegios Registrados</button>
         </div>
-        
-        <div id="tab-resultados" class="tab-content-panel active">
-            <div class="panel-actions-top">
-                <button class="btn-primary-admin" onclick="crearNuevoConcurso()">➕ Agregar Nuevo Concurso</button>
-            </div>
-            
-            <div class="form-group-inline" style="margin-top: 15px;">
-                <label><strong>Seleccionar Concurso a Editar:</strong></label>
+
+        <!-- TAB 1: GESTIÓN DE EVENTOS -->
+        <div id="tab-eventos" class="tab-content-panel active">
+            <div class="panel-control-group">
+                <label>Seleccionar Concurso Sede:</label>
                 <select id="select-concurso-num" class="admin-select" onchange="alCambiarConcursoSeleccionado()"></select>
-                <button class="btn-save-row" onclick="renombrarConcursoActual()">✏️ Cambiar Nombre</button>
-            </div>
 
-            <p class="panel-instruction">Puntajes: 1° = 4pts | 2° = 3pts | 3° = 2pts | 4° o más = 1pt | No participó = 0pts</p>
-            <div id="editor-puestos-container" class="table-responsive"></div>
-            <button class="btn-primary-admin" onclick="procesarResultadosConcurso()" style="margin-top:15px;">💾 Guardar Resultados</button>
+                <label style="margin-left: 15px;">Estado del Evento:</label>
+                <select id="select-estado-concurso" class="admin-select" onchange="cambiarEstadoConcursoActual(this.value)">
+                    <option value="pendiente">Opción 1: Próximo a Iniciar (Pendiente)</option>
+                    <option value="finalizado">Opción 2: Evento Finalizado</option>
+                    <option value="cancelado">Opción 3: Evento Cancelado</option>
+                </select>
+
+                <div class="button-row" style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
+                    <button class="btn-action" onclick="crearNuevoConcurso()">➕ Agregar Sede</button>
+                    <button class="btn-action" onclick="renombrarConcursoActual()">✏️ Renombrar Sede</button>
+                    <button class="btn-danger" onclick="eliminarConcursoActual()">🗑️ Eliminar Sede</button>
+                </div>
+            </div>
         </div>
 
+        <!-- TAB 2: CARGAR PUESTOS / PUNTOS -->
+        <div id="tab-puestos" class="tab-content-panel">
+            <p class="panel-instruction">Asigna los puestos obtenidos en la sede seleccionada:</p>
+            <div id="editor-puestos-container"></div>
+            <button class="btn-primary" style="margin-top:15px;" onclick="procesarResultadosConcurso()">💾 Guardar Puntajes</button>
+        </div>
+
+        <!-- TAB 3: ADMINISTRAR COLEGIOS -->
         <div id="tab-bandas" class="tab-content-panel">
-            <button class="btn-primary-admin" onclick="agregarBanda()">➕ Agregar Nuevo Colegio</button>
-            <div id="editor-bandas-container" class="table-responsive" style="margin-top: 10px;"></div>
+            <div class="button-row" style="margin-bottom:15px;">
+                <button class="btn-action" onclick="agregarBanda()">➕ Agregar Colegio</button>
+            </div>
+            <div id="editor-bandas-container"></div>
         </div>
-    </div>
+    </section>
 
-    <!-- MODAL LOGIN -->
-    <div id="modal-login" class="modal-overlay hidden">
-        <div class="modal-content">
-            <h3>Iniciar Sesión</h3>
-            <p class="modal-sub">Ingrese sus credenciales de acceso:</p>
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="main-container">
+
+        <!-- 1. SECCIÓN INICIO CON VISTA TRÍPTICO DE EVENTOS -->
+        <section id="sec-inicio" class="seccion-pagina active">
+            <h2 class="section-title">🎺 Cobertura de Eventos SUPERCOPA 2026</h2>
             
-            <form id="form-login" onsubmit="ejecutarLogin(event)">
-                <div class="form-group-login">
-                    <label for="login-username">Usuario:</label>
-                    <input type="text" id="login-username" class="input-login" placeholder="Ej. jhon" required>
-                </div>
-                
-                <div class="form-group-login">
-                    <label for="login-password">Contraseña:</label>
-                    <input type="password" id="login-password" class="input-login" placeholder="••••••••" required>
+            <div class="triptico-container">
+                <!-- TARJETA IZQUIERDA: EVENTO ANTERIOR / PASADO -->
+                <div id="card-evento-anterior" class="hero-card card-secundaria">
+                    <!-- Se genera dinámicamente -->
                 </div>
 
-                <p id="login-error-msg" class="error-msg hidden">⚠️ Usuario o contraseña incorrectos</p>
+                <!-- TARJETA CENTRAL: EVENTO PRINCIPAL MÁS CERCANO -->
+                <div id="card-evento-principal" class="hero-card card-principal">
+                    <!-- Se genera dinámicamente -->
+                </div>
 
-                <div class="modal-actions">
-                    <button type="submit" class="btn-save-row">Ingresar</button>
-                    <button type="button" class="btn-cancel" onclick="toggleModalLogin()">Cancelar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- SECCIÓN INICIO CON CONTEO REGRESIVO Y PRÓXIMO COLEGIO -->
-    <main id="sec-inicio" class="seccion-pagina active">
-        <section class="hero-3d">
-            <div class="hero-header">
-                <span class="badge-hero">PRÓXIMO EVENTO MAGNO</span>
-                <h2>SUPERCOPA 2026</h2>
-            </div>
-
-            <div class="next-school-card">
-                <div class="logo-3d-wrapper">
-                    <img src="LOGOCOLEGIOS/orbegoso.png" alt="Logo Colegio Próximo" class="logo-3d" onerror="this.onerror=null; this.src='LOGOCOLEGIOS/orbegoso.jpg';">
-                </div>
-                <div class="school-details">
-                    <span class="location-tag">📍 SANTA, PERÚ</span>
-                    <h3>I.E.P. GRAN MARISCAL LUIS JOSÉ DE ORBEGOSO</h3>
-                    <p class="event-date">📅 23 de Agosto, 2026 - 09:00 AM</p>
-                </div>
-            </div>
-
-            <!-- CONTADOR REGRESIVO -->
-            <div class="countdown-container">
-                <div class="time-block">
-                    <span id="cd-days">00</span>
-                    <label>Días</label>
-                </div>
-                <div class="time-separator">:</div>
-                <div class="time-block">
-                    <span id="cd-hours">00</span>
-                    <label>Horas</label>
-                </div>
-                <div class="time-separator">:</div>
-                <div class="time-block">
-                    <span id="cd-minutes">00</span>
-                    <label>Minutos</label>
-                </div>
-                <div class="time-separator">:</div>
-                <div class="time-block">
-                    <span id="cd-seconds">00</span>
-                    <label>Segundos</label>
+                <!-- TARJETA DERECHA: PRÓXIMO EVENTO -->
+                <div id="card-evento-siguiente" class="hero-card card-secundaria">
+                    <!-- Se genera dinámicamente -->
                 </div>
             </div>
         </section>
-    </main>
 
-    <!-- SECCIÓN CONCURSOS -->
-    <main id="sec-concursos" class="seccion-pagina">
-        <section class="container">
-            <h2 class="section-title">Próximos Concursos</h2>
-            <div class="matches-grid">
-                
-                <article class="match-card">
-                    <span class="badge">SANTA</span>
-                    <div class="logo-3d-wrapper-sm">
-                        <img src="LOGOCOLEGIOS/orbegoso.png" alt="Logo Orbegoso" class="logo-3d-sm" onerror="this.onerror=null; this.src='LOGOCOLEGIOS/orbegoso.jpg';">
-                    </div>
-                    <div class="vs">
-                        <h3>I.E.P. GRAN MARISCAL LUIS JOSÉ DE ORBEGOSO</h3>
-                    </div>
-                    <p class="match-date">📅 23 de Agosto, 2026</p>
-                </article>
-
-                <article class="match-card">
-                    <span class="badge">NUEVO CHIMBOTE</span>
-                    <div class="logo-3d-wrapper-sm">
-                        <img src="LOGOCOLEGIOS/quinones.png" alt="Logo Quiñones" class="logo-3d-sm" onerror="this.onerror=null; this.src='LOGOCOLEGIOS/quinones.jpg';">
-                    </div>
-                    <div class="vs">
-                        <h3>I.E. JOSÉ ABELARDO QUIÑONES</h3>
-                    </div>
-                    <p class="match-date">📅 29 de Agosto, 2026</p>
-                </article>
-
-            </div>
+        <!-- 2. SECCIÓN CONCURSOS -->
+        <section id="sec-concursos" class="seccion-pagina">
+            <h2 class="section-title">🎺 Cronograma Completo de Concursos 2026</h2>
+            <div id="concursos-grid-container" class="matches-grid"></div>
         </section>
-    </main>
 
-    <!-- SECCIÓN TABLA GENERAL -->
-    <main id="sec-tabla" class="seccion-pagina">
-        <section class="container">
-            <h2 class="section-title">Tabla de Clasificación General</h2>
-            <div class="filter-container">
-                <button class="filter-btn active" onclick="filtrar('general', this)">Ranking General</button>
+        <!-- 3. SECCIÓN TABLA GENERAL -->
+        <section id="sec-tabla" class="seccion-pagina">
+            <h2 class="section-title">🏆 Tabla General de Posiciones</h2>
+            
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filtrar('general', this)">Todas las Categorías</button>
                 <button class="filter-btn" onclick="filtrar('A', this)">Categoría A</button>
                 <button class="filter-btn" onclick="filtrar('B', this)">Categoría B</button>
                 <button class="filter-btn" onclick="filtrar('PRIMARIA', this)">Categoría Primaria</button>
             </div>
+
             <div class="table-responsive">
                 <table class="standings-table">
                     <thead>
@@ -189,19 +139,41 @@
                 </table>
             </div>
         </section>
-    </main>
 
-    <!-- SECCIÓN PRENSA -->
-    <main id="sec-prensa" class="seccion-pagina">
-        <section class="container">
-            <h2 class="section-title">Prensa & Cobertura</h2>
-            <p style="text-align:center;">Sección de noticias y transmisiones en vivo.</p>
+        <!-- 4. SECCIÓN PRENSA -->
+        <section id="sec-prensa" class="seccion-pagina">
+            <h2 class="section-title">📰 Galería y Prensa</h2>
+            <div class="press-grid">
+                <div class="press-card">
+                    <h3>Lanzamiento Oficial de la SUPERCOPA 2026</h3>
+                    <p>Se confirma el calendario oficial con colegios sede y la participación de bandas de toda la región.</p>
+                </div>
+            </div>
         </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 Supercopa Oficial.</p>
-    </footer>
+    <!-- MODAL DE LOGIN -->
+    <div id="modal-login" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3>🔑 Iniciar Sesión</h3>
+            <form onsubmit="ejecutarLogin(event)">
+                <div class="input-group">
+                    <label>Usuario:</label>
+                    <input type="text" id="login-username" required placeholder="Ingresa tu usuario">
+                </div>
+                <div class="input-group">
+                    <label>Contraseña:</label>
+                    <input type="password" id="login-password" required placeholder="••••••••">
+                </div>
+                <p id="login-error-msg" class="error-msg hidden">Usuario o contraseña incorrectos.</p>
+                <div class="modal-actions">
+                    <button type="submit" class="btn-primary">Ingresar</button>
+                    <button type="button" class="btn-secondary" onclick="toggleModalLogin()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
