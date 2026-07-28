@@ -11,54 +11,54 @@ const usuariosRegistrados = [
 ];
 
 // ==========================================
-// 2. BASE DE DATOS DE CONCURSOS Y ESTADOS
+// 2. BASE DE DATOS DE CONCURSOS Y ESTADOS (RUTAS CORREGIDAS)
 // ==========================================
 let concursosGlobales = [
-    { id: "c1",  lugar: "VALLE",         colegio: "I.E. RINCONADA",                   docente: "Favio Mendez",     fechaTxt: "19 de Julio, 2026",        fechaISO: "2026-07-19T09:00:00", logo: "LOGOCOLEGIOS/rinconada.png",             estado: "finalizado" },
-    { id: "c2",  lugar: "SANTA",         colegio: "I.E.P. G.M.L.J. ORBEGOSO",         docente: "Erik Obando",      fechaTxt: "23 de Agosto, 2026",       fechaISO: "2026-08-23T09:00:00", logo: "LOGOCOLEGIOS/orbegoso.png",              estado: "pendiente" },
-    { id: "c3",  lugar: "NUEVO CHIMBOTE",colegio: "I.E. ABELARDO QUIÑONES",           docente: "Ernesto Lomparte", fechaTxt: "29 de Agosto, 2026",       fechaISO: "2026-08-29T09:00:00", logo: "LOGOCOLEGIOS/quinones.png",              estado: "pendiente" },
-    { id: "c4",  lugar: "NUEVO CHIMBOTE",colegio: "I.E.P. EL SEÑOR ES MI PASTOR",    docente: "Erik Obando",      fechaTxt: "20 de Septiembre, 2026",   fechaISO: "2026-09-20T09:00:00", logo: "LOGOCOLEGIOS/pastor.png",                estado: "pendiente" },
-    { id: "c5",  lugar: "CASMA",         colegio: "I.E. REPÚBLICA DE CHILE",          docente: "Ernesto Lomparte", fechaTxt: "26 de Septiembre, 2026",   fechaISO: "2026-09-26T09:00:00", logo: "LOGOCOLEGIOS/chile.png",                 estado: "pendiente" },
-    { id: "c6",  lugar: "NUEVO CHIMBOTE",colegio: "I.E. REPÚBLICA ARGENTINA",        docente: "Juan Pablo",       fechaTxt: "03 de Octubre, 2026",      fechaISO: "2026-10-03T09:00:00", logo: "LOGOCOLEGIOS/republica_argentina.png",   estado: "pendiente" },
-    { id: "c7",  lugar: "NUEVO CHIMBOTE",colegio: "I.E. EXPERIMENTAL UNS",            docente: "Jose Galvez",      fechaTxt: "10 de Octubre, 2026",      fechaISO: "2026-10-10T09:00:00", logo: "LOGOCOLEGIOS/experimental_uns.png",    estado: "pendiente" },
-    { id: "c8",  lugar: "CHIMBOTE",      colegio: "I.E. GLORIOSA 329",                docente: "Miguel Mondoñedo", fechaTxt: "17 de Octubre, 2026",      fechaISO: "2026-10-17T09:00:00", logo: "LOGOCOLEGIOS/gloriosa_329.png",          estado: "pendiente" },
-    { id: "c9",  lugar: "NUEVO CHIMBOTE",colegio: "I.E. YUGOSLAVO",                   docente: "Esteban Salas",    fechaTxt: "24 de Octubre, 2026",      fechaISO: "2026-10-24T09:00:00", logo: "LOGOCOLEGIOS/yugoslavo.png",             estado: "pendiente" },
-    { id: "c10", lugar: "CHIMBOTE",      colegio: "I.E. JOSÉ GÁLVEZ",                 docente: "Luis Monzón",      fechaTxt: "31 de Octubre, 2026",      fechaISO: "2026-10-31T09:00:00", logo: "LOGOCOLEGIOS/jose_galvez.png",           estado: "pendiente" },
-    { id: "c11", lugar: "NUEVO CHIMBOTE",colegio: "I.E. PEDRO PABLO ATUSPARIA",       docente: "Juan Pablo",       fechaTxt: "07 de Noviembre, 2026",    fechaISO: "2026-11-07T09:00:00", logo: "LOGOCOLEGIOS/atusparia.png",              estado: "pendiente" },
-    { id: "c12", lugar: "SAN JACINTO",   colegio: "I.E.P. SAN FELIPE",                docente: "Boris Montero",    fechaTxt: "14 de Noviembre, 2026",    fechaISO: "2026-11-14T09:00:00", logo: "LOGOCOLEGIOS/san_felipe.png",             estado: "pendiente" },
-    { id: "c13", lugar: "SAN JACINTO",   colegio: "I.E. SAN JACINTO",                 docente: "Miguel Mondoñedo", fechaTxt: "22 de Noviembre, 2026",    fechaISO: "2026-11-22T09:00:00", logo: "LOGOCOLEGIOS/san_jacinto.png",            estado: "pendiente" },
-    { id: "c14", lugar: "CHIMBOTE",      colegio: "I.E. EX 314",                      docente: "Erik Obando",      fechaTxt: "05 de Diciembre, 2026",    fechaISO: "2026-12-05T09:00:00", logo: "LOGOCOLEGIOS/ex_314.png",                estado: "pendiente" },
-    { id: "c15", lugar: "COISHCO",       colegio: "I.E.P. JEAN PIAGET",               docente: "Victor Sanchez",   fechaTxt: "12 de Diciembre, 2026",    fechaISO: "2026-12-12T09:00:00", logo: "LOGOCOLEGIOS/jean_piaget.png",            estado: "pendiente" }
+    { id: "c1",  lugar: "VALLE",         colegio: "I.E. RINCONADA",                   docente: "Favio Mendez",     fechaTxt: "19 de Julio, 2026",        fechaISO: "2026-07-19T09:00:00", logo: "rinconada.png",             estado: "finalizado" },
+    { id: "c2",  lugar: "SANTA",         colegio: "I.E.P. G.M.L.J. ORBEGOSO",         docente: "Erik Obando",      fechaTxt: "23 de Agosto, 2026",       fechaISO: "2026-08-23T09:00:00", logo: "orbegoso.png",              estado: "pendiente" },
+    { id: "c3",  lugar: "NUEVO CHIMBOTE",colegio: "I.E. ABELARDO QUIÑONES",           docente: "Ernesto Lomparte", fechaTxt: "29 de Agosto, 2026",       fechaISO: "2026-08-29T09:00:00", logo: "quinones.png",              estado: "pendiente" },
+    { id: "c4",  lugar: "NUEVO CHIMBOTE",colegio: "I.E.P. EL SEÑOR ES MI PASTOR",    docente: "Erik Obando",      fechaTxt: "20 de Septiembre, 2026",   fechaISO: "2026-09-20T09:00:00", logo: "pastor.png",                estado: "pendiente" },
+    { id: "c5",  lugar: "CASMA",         colegio: "I.E. REPÚBLICA DE CHILE",          docente: "Ernesto Lomparte", fechaTxt: "26 de Septiembre, 2026",   fechaISO: "2026-09-26T09:00:00", logo: "chile.png",                 estado: "pendiente" },
+    { id: "c6",  lugar: "NUEVO CHIMBOTE",colegio: "I.E. REPÚBLICA ARGENTINA",        docente: "Juan Pablo",       fechaTxt: "03 de Octubre, 2026",      fechaISO: "2026-10-03T09:00:00", logo: "republica_argentina.png",   estado: "pendiente" },
+    { id: "c7",  lugar: "NUEVO CHIMBOTE",colegio: "I.E. EXPERIMENTAL UNS",            docente: "Jose Galvez",      fechaTxt: "10 de Octubre, 2026",      fechaISO: "2026-10-10T09:00:00", logo: "experimental_uns.png",    estado: "pendiente" },
+    { id: "c8",  lugar: "CHIMBOTE",      colegio: "I.E. GLORIOSA 329",                docente: "Miguel Mondoñedo", fechaTxt: "17 de Octubre, 2026",      fechaISO: "2026-10-17T09:00:00", logo: "gloriosa_329.png",          estado: "pendiente" },
+    { id: "c9",  lugar: "NUEVO CHIMBOTE",colegio: "I.E. YUGOSLAVO",                   docente: "Esteban Salas",    fechaTxt: "24 de Octubre, 2026",      fechaISO: "2026-10-24T09:00:00", logo: "yugoslavo.png",             estado: "pendiente" },
+    { id: "c10", lugar: "CHIMBOTE",      colegio: "I.E. JOSÉ GÁLVEZ",                 docente: "Luis Monzón",      fechaTxt: "31 de Octubre, 2026",      fechaISO: "2026-10-31T09:00:00", logo: "jose_galvez.png",           estado: "pendiente" },
+    { id: "c11", lugar: "NUEVO CHIMBOTE",colegio: "I.E. PEDRO PABLO ATUSPARIA",       docente: "Juan Pablo",       fechaTxt: "07 de Noviembre, 2026",    fechaISO: "2026-11-07T09:00:00", logo: "atusparia.png",              estado: "pendiente" },
+    { id: "c12", lugar: "SAN JACINTO",   colegio: "I.E.P. SAN FELIPE",                docente: "Boris Montero",    fechaTxt: "14 de Noviembre, 2026",    fechaISO: "2026-11-14T09:00:00", logo: "san_felipe.png",             estado: "pendiente" },
+    { id: "c13", lugar: "SAN JACINTO",   colegio: "I.E. SAN JACINTO",                 docente: "Miguel Mondoñedo", fechaTxt: "22 de Noviembre, 2026",    fechaISO: "2026-11-22T09:00:00", logo: "san_jacinto.png",            estado: "pendiente" },
+    { id: "c14", lugar: "CHIMBOTE",      colegio: "I.E. EX 314",                      docente: "Erik Obando",      fechaTxt: "05 de Diciembre, 2026",    fechaISO: "2026-12-05T09:00:00", logo: "ex_314.png",                estado: "pendiente" },
+    { id: "c15", lugar: "COISHCO",       colegio: "I.E.P. JEAN PIAGET",               docente: "Victor Sanchez",   fechaTxt: "12 de Diciembre, 2026",    fechaISO: "2026-12-12T09:00:00", logo: "jean_piaget.png",            estado: "pendiente" }
 ];
 
 let colegiosGlobales = [
     // --- CATEGORÍA A ---
-    { id: "C001", nombre: "I.E. EXPERIMENTAL UNS", cat: "A", logo: "LOGOCOLEGIOS/experimental_uns.png", resultados: { "c1": 4 } },
-    { id: "C002", nombre: "I.E. GLORIOSA 329", cat: "A", logo: "LOGOCOLEGIOS/gloriosa_329.png", resultados: { "c1": 3 } },
-    { id: "C003", nombre: "I.E. JOSÉ GÁLVEZ", cat: "A", logo: "LOGOCOLEGIOS/jose_galvez.png", resultados: { "c1": 2 } },
-    { id: "C004", nombre: "I.E. REPÚBLICA ARGENTINA", cat: "A", logo: "LOGOCOLEGIOS/republica_argentina.png", resultados: { "c1": 1 } },
-    { id: "C005", nombre: "I.E. PEDRO PABLO ATUSPARIA", cat: "A", logo: "LOGOCOLEGIOS/atusparia.png", resultados: {} },
-    { id: "C006", nombre: "I.E. REPÚBLICA DE CHILE", cat: "A", logo: "LOGOCOLEGIOS/chile.png", resultados: {} },
-    { id: "C007", nombre: "I.E. SAN JACINTO", cat: "A", logo: "LOGOCOLEGIOS/san_jacinto.png", resultados: {} },
-    { id: "C008", nombre: "I.E.P. EL SEÑOR ES MI PASTOR", cat: "A", logo: "LOGOCOLEGIOS/pastor.png", resultados: {} },
-    { id: "C009", nombre: "I.E.P. G.M.L.J. ORBEGOSO", cat: "A", logo: "LOGOCOLEGIOS/orbegoso.png", resultados: {} },
+    { id: "C001", nombre: "I.E. EXPERIMENTAL UNS", cat: "A", logo: "experimental_uns.png", resultados: { "c1": 4 } },
+    { id: "C002", nombre: "I.E. GLORIOSA 329", cat: "A", logo: "gloriosa_329.png", resultados: { "c1": 3 } },
+    { id: "C003", nombre: "I.E. JOSÉ GÁLVEZ", cat: "A", logo: "jose_galvez.png", resultados: { "c1": 2 } },
+    { id: "C004", nombre: "I.E. REPÚBLICA ARGENTINA", cat: "A", logo: "republica_argentina.png", resultados: { "c1": 1 } },
+    { id: "C005", nombre: "I.E. PEDRO PABLO ATUSPARIA", cat: "A", logo: "atusparia.png", resultados: {} },
+    { id: "C006", nombre: "I.E. REPÚBLICA DE CHILE", cat: "A", logo: "chile.png", resultados: {} },
+    { id: "C007", nombre: "I.E. SAN JACINTO", cat: "A", logo: "san_jacinto.png", resultados: {} },
+    { id: "C008", nombre: "I.E.P. EL SEÑOR ES MI PASTOR", cat: "A", logo: "pastor.png", resultados: {} },
+    { id: "C009", nombre: "I.E.P. G.M.L.J. ORBEGOSO", cat: "A", logo: "orbegoso.png", resultados: {} },
 
     // --- CATEGORÍA B ---
-    { id: "C010", nombre: "I.E. ABELARDO QUIÑONES", cat: "B", logo: "LOGOCOLEGIOS/quinones.png", resultados: {} },
-    { id: "C011", nombre: "I.E. CONSTRUCTORES DEL SABER", cat: "B", logo: "LOGOCOLEGIOS/constructores_saber.png", resultados: {} },
-    { id: "C012", nombre: "I.E. LA HUACA", cat: "B", logo: "LOGOCOLEGIOS/la_huaca.png", resultados: {} },
-    { id: "C013", nombre: "I.E. LAS BRISAS", cat: "B", logo: "LOGOCOLEGIOS/las_brisas.png", resultados: {} },
-    { id: "C014", nombre: "I.E. RINCONADA", cat: "B", logo: "LOGOCOLEGIOS/rinconada.png", resultados: {} },
-    { id: "C015", nombre: "I.E. YUGOSLAVO", cat: "B", logo: "LOGOCOLEGIOS/yugoslavo.png", resultados: {} },
-    { id: "C016", nombre: "I.E.P. SANTA TERESITA DE JESÚS", cat: "B", logo: "LOGOCOLEGIOS/santa_teresita_jesus.png", resultados: {} },
-    { id: "C017", nombre: "I.E.P. JEAN PIAGET", cat: "B", logo: "LOGOCOLEGIOS/jean_piaget.png", resultados: {} },
-    { id: "C018", nombre: "I.E.P. SAN FELIPE", cat: "B", logo: "LOGOCOLEGIOS/san_felipe.png", resultados: {} },
-    { id: "C019", nombre: "I.E.P. SANTA TERESITA", cat: "B", logo: "LOGOCOLEGIOS/santa_teresita.png", resultados: {} },
-    { id: "C020", nombre: "I.E. ANDRÉS AVELINO CÁCERES", cat: "B", logo: "LOGOCOLEGIOS/avelino_caceres.png", resultados: {} },
-    { id: "C021", nombre: "I.E.P. SCHOOL KINDER KING", cat: "B", logo: "LOGOCOLEGIOS/orbegoso.png", resultados: { "c1": 4 } },
+    { id: "C010", nombre: "I.E. ABELARDO QUIÑONES", cat: "B", logo: "quinones.png", resultados: {} },
+    { id: "C011", nombre: "I.E. CONSTRUCTORES DEL SABER", cat: "B", logo: "constructores_saber.png", resultados: {} },
+    { id: "C012", nombre: "I.E. LA HUACA", cat: "B", logo: "la_huaca.png", resultados: {} },
+    { id: "C013", nombre: "I.E. LAS BRISAS", cat: "B", logo: "las_brisas.png", resultados: {} },
+    { id: "C014", nombre: "I.E. RINCONADA", cat: "B", logo: "rinconada.png", resultados: {} },
+    { id: "C015", nombre: "I.E. YUGOSLAVO", cat: "B", logo: "yugoslavo.png", resultados: {} },
+    { id: "C016", nombre: "I.E.P. SANTA TERESITA DE JESÚS", cat: "B", logo: "santa_teresita_jesus.png", resultados: {} },
+    { id: "C017", nombre: "I.E.P. JEAN PIAGET", cat: "B", logo: "jean_piaget.png", resultados: {} },
+    { id: "C018", nombre: "I.E.P. SAN FELIPE", cat: "B", logo: "san_felipe.png", resultados: {} },
+    { id: "C019", nombre: "I.E.P. SANTA TERESITA", cat: "B", logo: "santa_teresita.png", resultados: {} },
+    { id: "C020", nombre: "I.E. ANDRÉS AVELINO CÁCERES", cat: "B", logo: "avelino_caceres.png", resultados: {} },
+    { id: "C021", nombre: "I.E.P. SCHOOL KINDER KING", cat: "B", logo: "orbegoso.png", resultados: { "c1": 4 } },
 
     // --- CATEGORÍA PRIMARIA ---
-    { id: "C022", nombre: "I.E. EX 314", cat: "PRIMARIA", logo: "LOGOCOLEGIOS/ex_314.png", resultados: { "c1": 4 } }
+    { id: "C022", nombre: "I.E. EX 314", cat: "PRIMARIA", logo: "ex_314.png", resultados: { "c1": 4 } }
 ];
 
 // ==========================================
@@ -101,7 +101,7 @@ function actualizarTripticoInicio() {
                 <div class="hero-badge ${badgeClase}">EVENTO ANTERIOR (${evAnterior.estado.toUpperCase()})</div>
                 <h3 class="hero-main-title">${evAnterior.colegio}</h3>
                 <div class="logo-3d-wrapper">
-                    <img src="${evAnterior.logo}" class="logo-3d" onerror="this.onerror=null; this.src='LOGOCOLEGIOS/orbegoso.png';">
+                    <img src="${evAnterior.logo}" class="logo-3d" onerror="this.onerror=null; this.src='orbegoso.png';">
                 </div>
                 <p class="hero-location">📍 ${evAnterior.lugar}, PERÚ</p>
                 <p class="hero-date">📅 ${evAnterior.fechaTxt}</p>
@@ -122,7 +122,7 @@ function actualizarTripticoInicio() {
             <div class="hero-badge ${badgeClase}">${badgeTexto}</div>
             <h2 class="hero-main-title">${evPrincipal.colegio}</h2>
             <div class="logo-3d-wrapper">
-                <img src="${evPrincipal.logo}" class="logo-3d" onerror="this.onerror=null; this.src='LOGOCOLEGIOS/orbegoso.png';">
+                <img src="${evPrincipal.logo}" class="logo-3d" onerror="this.onerror=null; this.src='orbegoso.png';">
             </div>
             <p class="hero-location">📍 ${evPrincipal.lugar}, PERÚ</p>
             <p class="hero-date">📅 ${evPrincipal.fechaTxt} - 09:00 AM</p>
@@ -145,7 +145,7 @@ function actualizarTripticoInicio() {
                 <div class="hero-badge">SIGUIENTE EN AGENDA</div>
                 <h3 class="hero-main-title">${evSiguiente.colegio}</h3>
                 <div class="logo-3d-wrapper">
-                    <img src="${evSiguiente.logo}" class="logo-3d" onerror="this.onerror=null; this.src='LOGOCOLEGIOS/orbegoso.png';">
+                    <img src="${evSiguiente.logo}" class="logo-3d" onerror="this.onerror=null; this.src='orbegoso.png';">
                 </div>
                 <p class="hero-location">📍 ${evSiguiente.lugar}, PERÚ</p>
                 <p class="hero-date">📅 ${evSiguiente.fechaTxt}</p>
@@ -230,7 +230,7 @@ function renderSeccionConcursos() {
         card.innerHTML = `
             <span class="badge">${c.lugar}</span>
             <div class="logo-3d-wrapper-sm">
-                <img src="${c.logo}" alt="Logo" class="logo-3d-sm" onerror="this.onerror=null; this.src='LOGOCOLEGIOS/orbegoso.png';">
+                <img src="${c.logo}" alt="Logo" class="logo-3d-sm" onerror="this.onerror=null; this.src='orbegoso.png';">
             </div>
             <div class="vs">
                 <h3>${c.colegio}</h3>
@@ -404,7 +404,7 @@ function crearNuevoConcurso() {
         docente: "Por Asignar",
         fechaTxt: "Fecha Por Definir",
         fechaISO: "2026-12-31T09:00:00",
-        logo: "LOGOCOLEGIOS/orbegoso.png",
+        logo: "orbegoso.png",
         estado: "pendiente"
     });
 
@@ -573,7 +573,7 @@ function agregarBanda() {
     if (!usuarioActual || usuarioActual.rol !== 'creador') return;
     const nombre = prompt("Nombre del colegio:");
     const cat = prompt("Categoría (A, B, PRIMARIA):", "B");
-    const logoRuta = prompt("Nombre de la imagen en LOGOCOLEGIOS/:", "orbegoso.png");
+    const logoRuta = prompt("Nombre del archivo de imagen (ejemplo: colegio.png):", "orbegoso.png");
     if (!nombre) return;
 
     const idNuevo = `C00${colegiosGlobales.length + 1}`;
@@ -581,7 +581,7 @@ function agregarBanda() {
         id: idNuevo, 
         nombre: nombre, 
         cat: cat ? cat.toUpperCase() : "B", 
-        logo: logoRuta ? `LOGOCOLEGIOS/${logoRuta}` : "LOGOCOLEGIOS/orbegoso.png",
+        logo: logoRuta ? logoRuta : "orbegoso.png",
         resultados: {} 
     });
 
@@ -643,13 +643,13 @@ function renderTablaPublica(lista) {
         else if (index === 1) pos = "🥈 2";
         else if (index === 2) pos = "🥉 3";
 
-        const logoRuta = colegio.logo ? colegio.logo : 'LOGOCOLEGIOS/orbegoso.png';
+        const logoRuta = colegio.logo ? colegio.logo : 'orbegoso.png';
 
         let rowHTML = `
             <td>${pos}</td>
             <td style="text-align:left;">
                 <div class="col-info">
-                    <img src="${logoRuta}" class="table-logo-img" alt="Logo" onerror="this.onerror=null; this.src='LOGOCOLEGIOS/orbegoso.png';">
+                    <img src="${logoRuta}" class="table-logo-img" alt="Logo" onerror="this.onerror=null; this.src='orbegoso.png';">
                     <strong>${colegio.nombre}</strong>
                 </div>
             </td>`;
