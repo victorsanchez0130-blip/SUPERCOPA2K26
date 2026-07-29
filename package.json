@@ -1,6 +1,7 @@
 {
   "name": "supercopa-2026",
   "version": "1.0.0",
+  "description": "Sistema de gestión SUPERCOPA 2026",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
