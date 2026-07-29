@@ -48,3 +48,20 @@ async function ejecutarLogin(event) {
 document.addEventListener('DOMContentLoaded', () => {
     cargarDatosDelServidor();
 });
+
+async function procesarResultadosConcurso() {
+    // ... tu lógica actual para calcular puntos ...
+
+    // Enviar datos guardados al backend
+    await fetch('/api/guardar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ concursos: concursosGlobales, colegios: colegiosGlobales })
+    });
+
+    alert("¡Resultados e historia de puntos guardados en Railway con éxito!");
+    
+    renderSeccionConcursos();
+    actualizarTripticoInicio();
+    renderTablaPublica(colegiosGlobales);
+}
