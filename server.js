@@ -8,8 +8,10 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Servir la carpeta estática del frontend
+// Servir archivos estáticos del frontend
 app.use(express.static(path.join(__dirname, 'public')));
+// Servir carpeta de logos específicamente
+app.use('/logos', express.static(path.join(__dirname, 'public', 'logos')));
 
 // Base de datos de Usuarios
 let usuariosRegistrados = [
