@@ -3,6 +3,26 @@ let timerInterval = null;
 let concursosGlobales = [];
 let colegiosGlobales = [];
 
+// Helper para normalizar rutas de logos
+function obtenerRutaLogo(nombreLogo) {
+    if (!nombreLogo) return '/logos/orbegoso.png';
+    if (nombreLogo.startsWith('http://') || nombreLogo.startsWith('https://')) {
+        return nombreLogo;
+    }
+    const archivo = nombreLogo.replace('/logos/', '').replace('logos/', '');
+    return `/logos/${archivo}`;
+}
+
+// Generador de fallback dinámico cuando el archivo de imagen no existe
+function generarFallbackLogo(nombreColegio) {
+    const texto = (nombreColegio || 'IE').split(' ').map(n => n[0]).join('').substring(0, 3).toUpperCase();
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+        <rect width="100" height="100" fill="#1C2541" rx="50"/>
+        <text x="50" y="58" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#00B4D8" text-anchor="middle">${texto}</text>
+    </svg>`;
+    return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+}
+
 // ==========================================
 // 1. CARGA DE DATOS DESDE EL BACKEND
 // ==========================================
@@ -75,11 +95,13 @@ function actualizarTripticoInicio() {
     if (cardAnterior) {
         if (evAnterior) {
             const badgeClase = evAnterior.estado === 'finalizado' ? 'badge-finalizado' : (evAnterior.estado === 'cancelado' ? 'badge-cancelado' : '');
+            const logoPath = obtenerRutaLogo(evAnterior.logo);
+            const fallback = generarFallbackLogo(evAnterior.colegio);
             cardAnterior.innerHTML = `
                 <div class="hero-badge ${badgeClase}">EVENTO ANTERIOR (${evAnterior.estado.toUpperCase()})</div>
                 <h3 class="hero-main-title">${evAnterior.colegio}</h3>
                 <div class="logo-3d-wrapper">
-                    <img src="${evAnterior.logo}" class="logo-3d" onerror="this.onerror=null; this.src='orbegoso.png';">
+                    <img src="${logoPath}" class="logo-3d" onerror="this.onerror=null; this.src='${fallback}';">
                 </div>
                 <p class="hero-location">📍 ${evAnterior.lugar}, PERÚ</p>
                 <p class="hero-date">📅 ${evAnterior.fechaTxt}</p>
@@ -95,11 +117,14 @@ function actualizarTripticoInicio() {
         if (evPrincipal.estado === 'finalizado') { badgeTexto = "EVENTO FINALIZADO"; badgeClase = "badge-finalizado"; }
         if (evPrincipal.estado === 'cancelado') { badgeTexto = "EVENTO CANCELADO"; badgeClase = "badge-cancelado"; }
 
+        const logoPath = obtenerRutaLogo(evPrincipal.logo);
+        const fallback = generarFallbackLogo(evPrincipal.colegio);
+
         cardPrincipal.innerHTML = `
             <div class="hero-badge ${badgeClase}">${badgeTexto}</div>
             <h2 class="hero-main-title">${evPrincipal.colegio}</h2>
             <div class="logo-3d-wrapper">
-                <img src="${evPrincipal.logo}" class="logo-3d" onerror="this.onerror=null; this.src='orbegoso.png';">
+                <img src="${logoPath}" class="logo-3d" onerror="this.onerror=null; this.src='${fallback}';">
             </div>
             <p class="hero-location">📍 ${evPrincipal.lugar}, PERÚ</p>
             <p class="hero-date">📅 ${evPrincipal.fechaTxt} - 09:00 AM</p>
@@ -117,11 +142,13 @@ function actualizarTripticoInicio() {
 
     if (cardSiguiente) {
         if (evSiguiente) {
+            const logoPath = obtenerRutaLogo(evSiguiente.logo);
+            const fallback = generarFallbackLogo(evSiguiente.colegio);
             cardSiguiente.innerHTML = `
                 <div class="hero-badge">SIGUIENTE EN AGENDA</div>
                 <h3 class="hero-main-title">${evSiguiente.colegio}</h3>
                 <div class="logo-3d-wrapper">
-                    <img src="${evSiguiente.logo}" class="logo-3d" onerror="this.onerror=null; this.src='orbegoso.png';">
+                    <img src="${logoPath}" class="logo-3d" onerror="this.onerror=null; this.src='${fallback}';">
                 </div>
                 <p class="hero-location">📍 ${evSiguiente.lugar}, PERÚ</p>
                 <p class="hero-date">📅 ${evSiguiente.fechaTxt}</p>
@@ -201,11 +228,14 @@ function renderSeccionConcursos() {
             badgeEstadoHTML = `<br><span class="badge-status-cancelado">✖ EVENTO CANCELADO</span>`;
         }
 
+        const logoPath = obtenerRutaLogo(c.logo);
+        const fallback = generarFallbackLogo(c.colegio);
+
         card.className = `match-card ${claseEstado}`;
         card.innerHTML = `
             <span class="badge">${c.lugar}</span>
             <div class="logo-3d-wrapper-sm">
-                <img src="${c.logo}" alt="Logo" class="logo-3d-sm" onerror="this.onerror=null; this.src='orbegoso.png';">
+                <img src="${logoPath}" alt="Logo" class="logo-3d-sm" onerror="this.onerror=null; this.src='${fallback}';">
             </div>
             <div class="vs">
                 <h3>${c.colegio}</h3>
@@ -633,13 +663,14 @@ function renderTablaPublica(lista) {
         else if (index === 1) pos = "🥈 2";
         else if (index === 2) pos = "🥉 3";
 
-        const logoRuta = colegio.logo ? colegio.logo : 'orbegoso.png';
+        const logoPath = obtenerRutaLogo(colegio.logo);
+        const fallback = generarFallbackLogo(colegio.nombre);
 
         let rowHTML = `
             <td>${pos}</td>
             <td style="text-align:left;">
                 <div class="col-info">
-                    <img src="${logoRuta}" class="table-logo-img" alt="Logo" onerror="this.onerror=null; this.src='orbegoso.png';">
+                    <img src="${logoPath}" class="table-logo-img" alt="Logo" onerror="this.onerror=null; this.src='${fallback}';">
                     <strong>${colegio.nombre}</strong>
                 </div>
             </td>`;
