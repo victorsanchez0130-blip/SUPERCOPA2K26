@@ -125,3 +125,70 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor activo en puerto ${PORT}`);
 });
+const express = require('express');
+const { Octokit } = require('@octokit/rest');
+
+const app = express();
+app.use(express.json()); // Necesario para leer el cuerpo de los JSON recibidos
+
+// Inicializar la API de GitHub con la clave almacenada en Railway
+const octokit = new Octokit({
+  auth: process.env.GITHUB_TOKEN,
+});
+
+// Endpoint para guardar cambios desde el panel del fundador
+app.post('/api/admin/guardar-configuracion', async (req, res) => {
+  try {
+    const nuevosDatos = req.body; 
+    const pathArchivo = 'src/config/settings.json'; // Ruta del archivo JSON a modificar en GitHub
+    
+    if (!process.env.GITHUB_REPO || !process.env.GITHUB_TOKEN) {
+      throw new Error("Las variables de entorno de GitHub no están configuradas.");
+    }
+
+    const [owner, repo] = process.env.GITHUB_REPO.split('/');
+    const branch = process.env.GITHUB_BRANCH || 'main';
+
+    // A. Obtener la versión actual del archivo en GitHub para conseguir su 'sha'
+    let shaExistente = null;
+    try {
+      const { data: fileData } = await octokit.repos.getContent({
+        owner,
+        repo,
+        path: pathArchivo,
+        ref: branch,
+      });
+      shaExistente = fileData.sha;
+    } catch (err) {
+      console.log("El archivo no existe aún en GitHub, se creará uno nuevo.");
+    }
+
+    // B. Convertir la información a formato Base64 (requerido por la API de GitHub)
+    const contenidoBase64 = Buffer.from(
+      JSON.stringify(nuevosDatos, null, 2)
+    ).toString('base64');
+
+    // C. Enviar el commit automático a GitHub
+    await octokit.repos.createOrUpdateFileContents({
+      owner,
+      repo,
+      path: pathArchivo,
+      message: 'feat(admin): Cambio realizado desde el panel web por el fundador',
+      content: contenidoBase64,
+      sha: shaExistente, // Si existe lo actualiza, si no, lo crea
+      branch: branch,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: 'Configuración guardada en GitHub. El despliegue en Railway se ha iniciado.',
+    });
+
+  } catch (error) {
+    console.error('Error al autoguardar en GitHub:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Error al guardar la configuración',
+    });
+  }
+});
