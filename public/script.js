@@ -3,7 +3,6 @@ let timerInterval = null;
 let concursosGlobales = [];
 let colegiosGlobales = [];
 
-// Helper para normalizar rutas de logos
 function obtenerRutaLogo(nombreLogo) {
     if (!nombreLogo) return '/logos/orbegoso.png';
     if (nombreLogo.startsWith('http://') || nombreLogo.startsWith('https://')) {
@@ -13,7 +12,6 @@ function obtenerRutaLogo(nombreLogo) {
     return `/logos/${archivo}`;
 }
 
-// Generador de fallback dinámico cuando el archivo de imagen no existe
 function generarFallbackLogo(nombreColegio) {
     const texto = (nombreColegio || 'IE').split(' ').map(n => n[0]).join('').substring(0, 3).toUpperCase();
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
@@ -23,9 +21,6 @@ function generarFallbackLogo(nombreColegio) {
     return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
-// ==========================================
-// 1. CARGA DE DATOS DESDE EL BACKEND
-// ==========================================
 async function cargarDatosServidor() {
     try {
         const response = await fetch('/api/datos');
@@ -65,9 +60,6 @@ async function sincronizarServidor() {
     }
 }
 
-// ==========================================
-// 2. VISTA TRÍPTICO DE INICIO
-// ==========================================
 function actualizarTripticoInicio() {
     const cardAnterior = document.getElementById('card-evento-anterior');
     const cardPrincipal = document.getElementById('card-evento-principal');
@@ -202,9 +194,6 @@ function iniciarConteoRegresivo(fechaIsoString) {
     }, 1000);
 }
 
-// ==========================================
-// 3. RENDERIZADO Y CONTROL DE NAVEGACIÓN
-// ==========================================
 function renderSeccionConcursos() {
     const grid = document.getElementById('concursos-grid-container');
     if (!grid) return;
@@ -357,9 +346,6 @@ function cambiarTab(tabId, btn) {
     if (btn) btn.classList.add('active');
 }
 
-// ==========================================
-// 4. GESTIÓN DEL PANEL CREADOR
-// ==========================================
 function actualizarSelectConcursos() {
     const select = document.getElementById('select-concurso-num');
     if (!select) return;
@@ -548,7 +534,7 @@ async function procesarResultadosConcurso() {
     renderTablaPublica(colegiosGlobales);
 
     await sincronizarServidor();
-    alert("¡Resultados y puntajes sincronizados en Railway con éxito!");
+    alert("¡Resultados y puntajes sincronizados en disco con éxito!");
 }
 
 function renderEditorBandas() {
@@ -620,9 +606,6 @@ async function eliminarBanda(index) {
     }
 }
 
-// ==========================================
-// 5. TABLA GENERAL DE POSICIONES
-// ==========================================
 function renderTablaPublica(lista) {
     const tbody = document.getElementById('tabla-body');
     const headerRow = document.getElementById('tabla-header-row');
@@ -694,7 +677,6 @@ function filtrar(categoria, btn) {
     else renderTablaPublica(colegiosGlobales.filter(c => c.cat === categoria));
 }
 
-// INICIALIZACIÓN
 document.addEventListener('DOMContentLoaded', () => {
     cargarDatosServidor();
 });
