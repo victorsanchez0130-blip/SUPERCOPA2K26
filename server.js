@@ -77,9 +77,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/logos', express.static(path.join(__dirname, 'public', 'logos')));
 
 const usuariosRegistrados = [
-    { usuario: "jhon", pass: "123456", nombre: "Jhon Cristopher Alvarado Ruiz", rol: "creador" },
-    { usuario: "orbegoso", pass: "docente1", nombre: "Docente: Gran Mariscal Orbegoso", rol: "docente" },
-    { usuario: "quinones", pass: "docente2", nombre: "Docente: José Abelardo Quiñones", rol: "docente" }
+    { usuario: "Victor", pass: "123456", nombre: "Jhon Cristopher Alvarado Ruiz", rol: "Fundador" },
+    { usuario: "Victor", pass: "12542563", nombre: "Victor Sánchez Vera", rol: "Editor" }
 ];
 
 app.post('/api/login', (req, res) => {
