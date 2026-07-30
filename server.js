@@ -102,8 +102,8 @@ app.get('/api/datos', (req, res) => {
 app.post('/api/guardar', (req, res) => {
     const { concursos, colegios, userRole } = req.body;
 
-    if (userRole !== 'creador') {
-        return res.status(403).json({ ok: false, message: "Acceso denegado: Se requiere rol de CREADOR" });
+    if (userRole !== 'Fundador') {
+        return res.status(403).json({ ok: false, message: "Acceso denegado: Se requiere rol de FUNDADOR" });
     }
 
     if (concursos) appState.concursos = concursos;
