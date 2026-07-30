@@ -43,7 +43,7 @@ let colegiosGlobales = [
     { id: "C001", nombre: "I.E. EXPERIMENTAL UNS", cat: "A", logo: "experimental.png", resultados: {} },
     { id: "C002", nombre: "I.E. GLORIOSA 329", cat: "A", logo: "gloriosa.png", resultados: {} },
     { id: "C003", nombre: "I.E. JOSÉ GÁLVEZ", cat: "A", logo: "josegalvez.png", resultados: {} },
-    { id: "C004", nombre: "I.E. REPÚBLICA ARGENTINA", cat: "A", logo: "rargentina.png", resultados: {} },
+    { id: "C004", nombre: "I.E. REPÚBLICA ARGENTINA", cat: "A", logo: "argentina.png", resultados: {} },
     { id: "C005", nombre: "I.E. PEDRO PABLO ATUSPARIA", cat: "A", logo: "atusparia.png", resultados: {} },
     { id: "C006", nombre: "I.E. REPÚBLICA DE CHILE", cat: "A", logo: "chile.png", resultados: {} },
     { id: "C007", nombre: "I.E. SAN JACINTO", cat: "A", logo: "sanjacinto.png", resultados: {} },
