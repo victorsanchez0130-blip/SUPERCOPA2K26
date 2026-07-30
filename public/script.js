@@ -38,7 +38,7 @@ async function cargarDatosServidor() {
 }
 
 async function sincronizarServidor() {
-    if (!usuarioActual || usuarioActual.rol !== 'creador') return;
+    if (!usuarioActual || usuarioActual.rol !== 'Fundador') return;
 
     try {
         const response = await fetch('/api/guardar', {
@@ -310,11 +310,11 @@ function actualizarInterfazSegunRol() {
         if (adminBar) adminBar.classList.remove('hidden');
         if (userDisplayName) userDisplayName.innerText = `Usuario: ${usuarioActual.nombre}`;
 
-        if (usuarioActual.rol === 'creador') {
-            if (roleBadge) roleBadge.innerText = 'ROL: CREADOR';
+        if (usuarioActual.rol === 'Fundador') {
+            if (roleBadge) roleBadge.innerText = 'ROL: Fundador';
             if (btnAbrirPanel) btnAbrirPanel.classList.remove('hidden');
         } else {
-            if (roleBadge) roleBadge.innerText = 'ROL: DOCENTE';
+            if (roleBadge) roleBadge.innerText = 'ROL: EDITOR';
             if (btnAbrirPanel) btnAbrirPanel.classList.add('hidden');
             if (panelEdicion) panelEdicion.classList.add('hidden');
         }
@@ -331,7 +331,7 @@ function actualizarInterfazSegunRol() {
 }
 
 function togglePanelGestion() {
-    if (usuarioActual && usuarioActual.rol === 'creador') {
+    if (usuarioActual && usuarioActual.rol === 'Fundador') {
         const panelEdicion = document.getElementById('panel-edicion');
         if (panelEdicion) panelEdicion.classList.toggle('hidden');
     }
@@ -376,7 +376,7 @@ function alCambiarConcursoSeleccionado() {
 }
 
 async function cambiarEstadoConcursoActual(nuevoEstado) {
-    if (!usuarioActual || usuarioActual.rol !== 'creador') return;
+    if (!usuarioActual || usuarioActual.rol !== 'Fundador') return;
     const select = document.getElementById('select-concurso-num');
     const idConc = select.value;
 
@@ -391,7 +391,7 @@ async function cambiarEstadoConcursoActual(nuevoEstado) {
 }
 
 async function crearNuevoConcurso() {
-    if (!usuarioActual || usuarioActual.rol !== 'creador') return;
+    if (!usuarioActual || usuarioActual.rol !== 'Fundador') return;
     const colegio = prompt("Nombre del colegio sede:");
     if (!colegio) return;
 
@@ -416,7 +416,7 @@ async function crearNuevoConcurso() {
 }
 
 async function renombrarConcursoActual() {
-    if (!usuarioActual || usuarioActual.rol !== 'creador') return;
+    if (!usuarioActual || usuarioActual.rol !== 'Fundador') return;
     const select = document.getElementById('select-concurso-num');
     const idConc = select.value;
 
@@ -436,7 +436,7 @@ async function renombrarConcursoActual() {
 }
 
 async function eliminarConcursoActual() {
-    if (!usuarioActual || usuarioActual.rol !== 'creador') return;
+    if (!usuarioActual || usuarioActual.rol !== 'Fundador') return;
     const select = document.getElementById('select-concurso-num');
     const idConc = select.value;
 
@@ -500,8 +500,8 @@ function renderEditorPuestos() {
 }
 
 async function procesarResultadosConcurso() {
-    if (!usuarioActual || usuarioActual.rol !== 'creador') {
-        alert("Acceso denegado. Solo el Creador puede guardar resultados.");
+    if (!usuarioActual || usuarioActual.rol !== 'Fundador') {
+        alert("Acceso denegado. Solo el Fundador puede guardar resultados.");
         return;
     }
 
@@ -566,7 +566,7 @@ function renderEditorBandas() {
 }
 
 async function cambiarCategoriaColegio(index, nuevaCat) {
-    if (!usuarioActual || usuarioActual.rol !== 'creador') return;
+    if (!usuarioActual || usuarioActual.rol !== 'Fundador') return;
     colegiosGlobales[index].cat = nuevaCat;
     renderEditorPuestos();
     renderTablaPublica(colegiosGlobales);
@@ -574,7 +574,7 @@ async function cambiarCategoriaColegio(index, nuevaCat) {
 }
 
 async function agregarBanda() {
-    if (!usuarioActual || usuarioActual.rol !== 'creador') return;
+    if (!usuarioActual || usuarioActual.rol !== 'Fundador') return;
     const nombre = prompt("Nombre del colegio:");
     const cat = prompt("Categoría (A, B, PRIMARIA):", "B");
     const logoRuta = prompt("Nombre del archivo de imagen (ejemplo: colegio.png):", "orbegoso.png");
@@ -596,7 +596,7 @@ async function agregarBanda() {
 }
 
 async function eliminarBanda(index) {
-    if (!usuarioActual || usuarioActual.rol !== 'creador') return;
+    if (!usuarioActual || usuarioActual.rol !== 'Fundador') return;
     if (confirm(`¿Eliminar ${colegiosGlobales[index].nombre}?`)) {
         colegiosGlobales.splice(index, 1);
         renderEditorPuestos();
