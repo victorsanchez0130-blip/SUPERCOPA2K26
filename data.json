@@ -53,16 +53,6 @@
     {
       "id": "c6",
       "lugar": "NUEVO CHIMBOTE",
-      "colegio": "I.E. REPÚBLICA ARGENTINA",
-      "docente": "Juan Pablo",
-      "fechaTxt": "03 de Octubre, 2026",
-      "fechaISO": "2026-10-03T09:00:00",
-      "logo": "argentina.png",
-      "estado": "pendiente"
-    },
-    {
-      "id": "c7",
-      "lugar": "NUEVO CHIMBOTE",
       "colegio": "I.E. EXPERIMENTAL UNS",
       "docente": "Jose Galvez",
       "fechaTxt": "10 de Octubre, 2026",
@@ -71,7 +61,7 @@
       "estado": "pendiente"
     },
     {
-      "id": "c8",
+      "id": "c7",
       "lugar": "CHIMBOTE",
       "colegio": "I.E. GLORIOSA 329",
       "docente": "Miguel Mondoñedo",
@@ -81,7 +71,7 @@
       "estado": "pendiente"
     },
     {
-      "id": "c9",
+      "id": "c8",
       "lugar": "NUEVO CHIMBOTE",
       "colegio": "I.E. YUGOSLAVO",
       "docente": "Esteban Salas",
@@ -91,7 +81,7 @@
       "estado": "pendiente"
     },
     {
-      "id": "c10",
+      "id": "c9",
       "lugar": "CHIMBOTE",
       "colegio": "I.E. JOSÉ GÁLVEZ",
       "docente": "Luis Monzón",
@@ -101,7 +91,7 @@
       "estado": "pendiente"
     },
     {
-      "id": "c11",
+      "id": "c10",
       "lugar": "NUEVO CHIMBOTE",
       "colegio": "I.E. PEDRO PABLO ATUSPARIA",
       "docente": "Juan Pablo",
@@ -111,7 +101,7 @@
       "estado": "pendiente"
     },
     {
-      "id": "c12",
+      "id": "c11",
       "lugar": "SAN JACINTO",
       "colegio": "I.E.P. SAN FELIPE",
       "docente": "Boris Montero",
@@ -121,13 +111,23 @@
       "estado": "pendiente"
     },
     {
-      "id": "c13",
+      "id": "c12",
       "lugar": "SAN JACINTO",
       "colegio": "I.E. SAN JACINTO",
       "docente": "Miguel Mondoñedo",
       "fechaTxt": "22 de Noviembre, 2026",
       "fechaISO": "2026-11-22T09:00:00",
       "logo": "sanjacinto.png",
+      "estado": "pendiente"
+    },
+    {
+      "id": "c13",
+      "lugar": "NUEVO CHIMBOTE",
+      "colegio": "I.E. REPÚBLICA ARGENTINA",
+      "docente": "Juan Pablo",
+      "fechaTxt": "28 de Noviembre, 2026",
+      "fechaISO": "2026-10-03T09:00:00",
+      "logo": "argentina.png",
       "estado": "pendiente"
     },
     {
