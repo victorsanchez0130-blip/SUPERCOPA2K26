@@ -18,14 +18,14 @@
       "fechaTxt": "23 de Agosto, 2026",
       "fechaISO": "2026-08-23T09:00:00",
       "logo": "orbegoso.png",
-      "estado": "pendiente"
+      "estado": "finalizado"
     },
     {
       "id": "c3",
       "lugar": "NUEVO CHIMBOTE",
       "colegio": "I.E. ABELARDO QUIÑONES",
       "docente": "Ernesto Lomparte",
-      "fechaTxt": "29 de Agosto, 2026",
+      "fechaTxt": "30 de Agosto, 2026",
       "fechaISO": "2026-08-29T09:00:00",
       "logo": "quinones.png",
       "estado": "pendiente"
