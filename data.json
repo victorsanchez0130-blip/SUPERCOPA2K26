@@ -28,7 +28,7 @@
       "fechaTxt": "30 de Agosto, 2026",
       "fechaISO": "2026-08-29T09:00:00",
       "logo": "quinones.png",
-      "estado": "pendiente"
+      "estado": "finalizado"
     },
     {
       "id": "c4",
@@ -45,19 +45,9 @@
       "lugar": "CASMA",
       "colegio": "I.E. REPÚBLICA DE CHILE",
       "docente": "Ernesto Lomparte",
-      "fechaTxt": "26 de Septiembre, 2026",
-      "fechaISO": "2026-09-26T09:00:00",
+      "fechaTxt": "27 de Septiembre, 2026",
+      "fechaISO": "2026-09-27T09:00:00",
       "logo": "chile.png",
-      "estado": "pendiente"
-    },
-    {
-      "id": "c6",
-      "lugar": "NUEVO CHIMBOTE",
-      "colegio": "I.E. EXPERIMENTAL UNS",
-      "docente": "Jose Galvez",
-      "fechaTxt": "10 de Octubre, 2026",
-      "fechaISO": "2026-10-10T09:00:00",
-      "logo": "experimental.png",
       "estado": "pendiente"
     },
     {
